@@ -6,12 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Массив с путями к видео файлам
     const videoSources = [
-        'images/saqbol/video/video1.MP4',
-        'images/saqbol/video/video2.MP4',
-        'images/saqbol/video/video3.MP4',
-        'images/saqbol/video/video4.MP4',
-        'images/saqbol/video/video5.MP4',
-        'images/saqbol/video/video6.MP4'
+        'images/saqbol/video/video1.mp4',
+        'images/saqbol/video/video2.mp4',
+        'images/saqbol/video/video3.mp4',
+        'images/saqbol/video/video4.mp4',
+        'images/saqbol/video/video5.mp4',
+        'images/saqbol/video/video6.mp4'
     ];
 
     // Добавляем обработчики для каждой истории
