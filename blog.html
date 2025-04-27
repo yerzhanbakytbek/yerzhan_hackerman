@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -32,6 +33,10 @@
                 <button class="story-modal-close">&times;</button>
             </div>
             <div class="story-modal-body"></div>
+            <div class="story-modal-nav">
+                <button class="story-nav-button prev-story">Алдыңғы</button>
+                <button class="story-nav-button next-story">Келесі</button>
+            </div>
         </div>
     </div>
 
@@ -40,42 +45,43 @@
         <section class="stories-section">
             <div class="container">
                 <h2>Жылдам тақтар</h2>
-                <div class="stories-grid">
-                    <div class="swiper stories-slider">
-                        <div class="swiper-wrapper">
-                            <!-- Story items -->
-                            <div class="swiper-slide story-card" data-story-id="1">
-                                <div class="story-content">
-                                    <div class="story-icon">🔎</div>
-                                    <h3>Фишинг деген не?</h3>
-                                </div>
-                            </div>
-                            <div class="swiper-slide story-card" data-story-id="2">
-                                <div class="story-content">
-                                    <div class="story-icon">🔎</div>
-                                    <h3>IP арқылы ақпарат табу</h3>
-                                </div>
-                            </div>
-                            <div class="swiper-slide story-card" data-story-id="3">
-                                <div class="story-content">
-                                    <div class="story-icon">🗂️</div>
-                                    <h3>Ең жақсы 5 OSINT құралы</h3>
-                                </div>
-                            </div>
-                            <div class="swiper-slide story-card" data-story-id="4">
-                                <div class="story-content">
-                                    <div class="story-icon">🛡️</div>
-                                    <h3>Құпия сөзді қорғаудың 5 әдісі</h3>
-                                </div>
-                            </div>
-                            <div class="swiper-slide story-card" data-story-id="5">
-                                <div class="story-content">
-                                    <div class="story-icon">📡</div>
-                                    <h3>Shodan қалай жұмыс істейді?</h3>
-                                </div>
-                            </div>
+                <div class="stories-container">
+                    <!-- Story items -->
+                    <div class="story-item" data-story-id="1">
+                        <div class="story-ring">
+                            <img src="images/security.jpg" alt="Қауіпсіз интернет">
                         </div>
-                        <div class="swiper-pagination"></div>
+                        <p class="story-title">Қауіпсіз интернет</p>
+                    </div>
+                    <div class="story-item" data-story-id="2">
+                        <div class="story-ring">
+                            <img src="images/social.jpg" alt="Әлеуметтік желі">
+                        </div>
+                        <p class="story-title">Әлеуметтік желі</p>
+                    </div>
+                    <div class="story-item" data-story-id="3">
+                        <div class="story-ring">
+                            <img src="images/password.jpg" alt="Құпия сөз">
+                        </div>
+                        <p class="story-title">Құпия сөз</p>
+                    </div>
+                    <div class="story-item" data-story-id="4">
+                        <div class="story-ring">
+                            <img src="images/osint.jpg" alt="OSINT">
+                        </div>
+                        <p class="story-title">OSINT құралдары</p>
+                    </div>
+                    <div class="story-item" data-story-id="5">
+                        <div class="story-ring">
+                            <img src="images/protection.jpg" alt="Қорғаныс">
+                        </div>
+                        <p class="story-title">Қорғаныс әдістері</p>
+                    </div>
+                    <div class="story-item" data-story-id="6">
+                        <div class="story-ring">
+                            <img src="images/shodan.jpg" alt="Shodan">
+                        </div>
+                        <p class="story-title">Shodan</p>
                     </div>
                 </div>
             </div>
