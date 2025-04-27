@@ -1429,4 +1429,135 @@ footer {
         top: -40px;
         right: 0;
     }
+}
+
+/* Story Modal */
+.story-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.story-modal.active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.story-modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.story-modal-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #eee;
+}
+
+.story-modal-icon {
+    font-size: 24px;
+    margin-right: 15px;
+}
+
+.story-modal-title {
+    flex: 1;
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.story-modal-close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #666;
+    cursor: pointer;
+    padding: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.story-modal-close:hover {
+    color: var(--primary-color);
+}
+
+.story-modal-body {
+    padding: 30px;
+    overflow-y: auto;
+    max-height: calc(80vh - 80px);
+}
+
+.story-modal-body p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.story-modal-body ul,
+.story-modal-body ol {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.story-modal-body li {
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.story-modal-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: #f8f9fa;
+    border-top: 1px solid #eee;
+}
+
+.story-nav-button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.story-nav-button:hover {
+    background: #3333cc;
+}
+
+.story-nav-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .story-modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .story-modal-body {
+        padding: 20px;
+    }
 } 
