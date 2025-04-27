@@ -452,162 +452,132 @@ footer {
 
 /* Stories section */
 .stories-section {
-    padding: 6rem 2rem;
-    background: var(--background);
+    padding: 40px 20px;
+    background-color: #f8f9fa;
 }
 
 .stories-grid {
-    margin-top: 2rem;
-}
-
-.stories-slider {
-    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
 }
 
 .story-card {
-    background: var(--card-background);
-    border-radius: 15px;
-    height: 200px;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
     cursor: pointer;
-    transition: var(--transition);
-    overflow: hidden;
-    width: 280px;
-    margin-right: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .story-card:hover {
     transform: translateY(-5px);
-}
-
-.story-content {
-    padding: 1.5rem;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .story-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 2em;
+    margin-bottom: 10px;
 }
 
-.story-content h3 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.25rem;
-    line-height: 1.4;
-    color: #fff;
+.story-card h3 {
+    margin: 0;
+    font-size: 1.1em;
+    color: #333;
 }
 
 /* Story Modal Styles */
 .story-modal {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 1100;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
 
 .story-modal.active {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .story-modal-content {
     background: white;
-    border-radius: 20px;
+    border-radius: 12px;
     width: 90%;
     max-width: 600px;
-    max-height: 90vh;
+    max-height: 80vh;
     overflow-y: auto;
     position: relative;
 }
 
 .story-modal-header {
-    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    padding: 20px;
     border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.story-modal-title {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
 }
 
 .story-modal-icon {
-    font-size: 2rem;
+    font-size: 1.5em;
+    margin-right: 10px;
 }
 
 .story-modal-title-text {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
+    margin: 0;
+    font-size: 1.3em;
+    flex-grow: 1;
 }
 
 .story-modal-close {
     background: none;
     border: none;
-    font-size: 2rem;
+    font-size: 1.5em;
     cursor: pointer;
     padding: 0;
     color: #666;
 }
 
 .story-modal-body {
-    padding: 2rem;
+    padding: 20px;
 }
 
 .story-modal-text {
-    font-size: 1.1rem;
     line-height: 1.6;
-}
-
-.story-modal-text p {
-    margin-bottom: 1rem;
 }
 
 .story-modal-text ul,
 .story-modal-text ol {
-    margin-left: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.story-modal-text li {
-    margin-bottom: 0.5rem;
+    padding-left: 20px;
+    margin: 10px 0;
 }
 
 .story-modal-footer {
-    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
     border-top: 1px solid #eee;
 }
 
-.story-modal-nav {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-}
-
 .story-nav-button {
-    background: var(--primary-color);
+    background: #4040FF;
     color: white;
     border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
     cursor: pointer;
-    font-weight: 600;
-    transition: var(--transition);
+    transition: background-color 0.3s ease;
 }
 
 .story-nav-button:hover {
-    background: #3333cc;
+    background: #3333CC;
 }
 
 .story-nav-button:disabled {
@@ -615,112 +585,61 @@ footer {
     cursor: not-allowed;
 }
 
-@media (max-width: 768px) {
-    .story-card {
-        width: 220px;
-        height: 180px;
-    }
-
-    .story-content h3 {
-        font-size: 1.1rem;
-    }
-
-    .story-modal-content {
-        width: 95%;
-    }
-
-    .story-modal-title-text {
-        font-size: 1.25rem;
-    }
-}
-
 /* Blog posts section */
 .blog-posts {
-    padding: 4rem 0;
-}
-
-.blog-posts h2 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 2rem;
+    padding: 40px 20px;
 }
 
 .posts-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .post-card {
-    background: #fff;
-    border-radius: 20px;
+    background: white;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .post-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
 }
 
-.post-image {
+.post-card img {
     width: 100%;
     height: 200px;
-    overflow: hidden;
-}
-
-.post-image img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
 }
 
 .post-content {
-    padding: 1.5rem;
-}
-
-.post-categories {
-    margin-bottom: 1rem;
-}
-
-.category {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    background: rgba(64, 64, 255, 0.1);
-    color: var(--primary-color);
-    border-radius: 20px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
+    padding: 20px;
 }
 
 .post-content h3 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.5rem;
-    line-height: 1.4;
-    margin-bottom: 1rem;
-    color: var(--text-color);
+    margin: 0 0 10px 0;
+    font-size: 1.2em;
+    color: #333;
 }
 
 .post-content p {
+    margin: 0 0 15px 0;
     color: #666;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 .read-more {
-    color: var(--primary-color);
+    color: #4040FF;
     text-decoration: none;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    transition: var(--transition);
+    font-weight: 500;
 }
 
 .read-more:hover {
-    opacity: 0.8;
+    text-decoration: underline;
 }
 
 /* Swiper customization */
@@ -752,15 +671,16 @@ footer {
     }
 
     .posts-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 
     .story-card {
-        height: 180px;
+        margin: 0 10px;
     }
 
-    .story-content h3 {
-        font-size: 1.1rem;
+    .story-modal-content {
+        width: 95%;
+        margin: 10px;
     }
 
     .about-section {
@@ -1514,5 +1434,54 @@ footer {
 
     .message-content {
         max-width: 85%;
+    }
+}
+
+/* Видео модальное окно */
+.video-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+}
+
+.video-modal video {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 12px;
+}
+
+.video-modal .close-modal {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+    .video-modal-content {
+        width: 95%;
+    }
+
+    .video-modal .close-modal {
+        top: -40px;
+        right: 0;
     }
 } 
