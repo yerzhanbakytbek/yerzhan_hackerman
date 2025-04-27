@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 4,
-            icon: '🗂️',
+            icon: 'fa-search',
             title: 'Ең жақсы 5 OSINT құралы',
             content: `
                 <p>OSINT зерттеулері үшін ең пайдалы құралдар:</p>
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 5,
-            icon: '🛡️',
+            icon: 'fa-shield',
             title: 'Құпия сөзді қорғаудың 5 әдісі',
             content: `
                 <p>Құпия сөздеріңізді қорғаудың негізгі әдістері:</p>
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 6,
-            icon: '📡',
+            icon: 'fa-satellite',
             title: 'Shodan қалай жұмыс істейді?',
             content: `
                 <p>Shodan - интернетке қосылған құрылғыларды іздейтін қуатты құрал.</p>
@@ -94,80 +94,101 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentStoryIndex = 0;
 
-    // Story Modal functionality
+    // Story Modal elements
     const modal = document.querySelector('.story-modal');
     const modalContent = modal.querySelector('.story-modal-content');
     const modalTitle = modal.querySelector('.story-modal-title');
-    const modalIcon = modal.querySelector('.story-modal-icon');
+    const modalIcon = modal.querySelector('.story-modal-icon i');
     const modalBody = modal.querySelector('.story-modal-body');
     const closeButton = modal.querySelector('.story-modal-close');
     const prevButton = modal.querySelector('.prev-story');
     const nextButton = modal.querySelector('.next-story');
 
-    // Story cards click handlers
+    // Add click handlers to story items
     document.querySelectorAll('.story-item').forEach((item, index) => {
         item.addEventListener('click', () => openStory(index));
     });
 
+    // Open story function
     function openStory(index) {
         const story = stories[index];
-        modalIcon.className = `fas ${story.icon} story-modal-icon`;
+        
+        // Update modal content
+        modalIcon.className = `fas ${story.icon}`;
         modalTitle.textContent = story.title;
         modalBody.innerHTML = story.content;
+        
+        // Show modal
         modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Update current index and navigation
         currentStoryIndex = index;
         updateNavButtons();
-        document.body.style.overflow = 'hidden';
     }
 
-    // Обновление кнопок навигации
+    // Update navigation buttons
     function updateNavButtons() {
         prevButton.disabled = currentStoryIndex === 0;
         nextButton.disabled = currentStoryIndex === stories.length - 1;
     }
 
-    // Следующая история
+    // Navigation functions
     function nextStory() {
         if (currentStoryIndex < stories.length - 1) {
             openStory(currentStoryIndex + 1);
         }
     }
 
-    // Предыдущая история
     function prevStory() {
         if (currentStoryIndex > 0) {
             openStory(currentStoryIndex - 1);
         }
     }
 
-    // Закрытие модального окна
+    // Close modal function
     function closeModal() {
         modal.classList.remove('active');
         document.body.style.overflow = '';
     }
 
-    // Обработчики событий
+    // Event listeners
     closeButton.addEventListener('click', closeModal);
     prevButton.addEventListener('click', prevStory);
     nextButton.addEventListener('click', nextStory);
 
-    // Закрытие по клику вне модального окна
+    // Close on outside click
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             closeModal();
         }
     });
 
-    // Навигация с помощью клавиш
+    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (modal.classList.contains('active')) {
-            if (e.key === 'Escape') {
-                closeModal();
-            } else if (e.key === 'ArrowRight') {
-                nextStory();
-            } else if (e.key === 'ArrowLeft') {
-                prevStory();
+            switch(e.key) {
+                case 'Escape':
+                    closeModal();
+                    break;
+                case 'ArrowRight':
+                    nextStory();
+                    break;
+                case 'ArrowLeft':
+                    prevStory();
+                    break;
             }
         }
+    });
+
+    // Add hover effect to story rings
+    document.querySelectorAll('.story-ring').forEach(ring => {
+        ring.addEventListener('mouseenter', () => {
+            ring.style.transform = 'scale(1.1)';
+        });
+        
+        ring.addEventListener('mouseleave', () => {
+            ring.style.transform = 'scale(1)';
+        });
     });
 }); 
