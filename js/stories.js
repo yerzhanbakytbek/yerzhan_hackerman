@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 2,
-            icon: 'fa-user-shield',
+            icon: 'fa-mobile-alt',
             title: 'Әлеуметтік желідегі қауіпсіздік',
             content: `
                 <p>Әлеуметтік желілерде өзіңізді қорғау үшін:</p>
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 3,
-            icon: 'fa-lock',
+            icon: 'fa-key',
             title: 'Құпия сөз қауіпсіздігі',
             content: `
                 <p>Құпия сөздеріңізді қорғау үшін:</p>
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 4,
             icon: 'fa-search',
-            title: 'Ең жақсы 5 OSINT құралы',
+            title: 'OSINT құралдары',
             content: `
                 <p>OSINT зерттеулері үшін ең пайдалы құралдар:</p>
                 <ol>
@@ -61,8 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 5,
-            icon: 'fa-shield',
-            title: 'Құпия сөзді қорғаудың 5 әдісі',
+            icon: 'fa-shield-alt',
+            title: 'Қорғаныс әдістері',
             content: `
                 <p>Құпия сөздеріңізді қорғаудың негізгі әдістері:</p>
                 <ol>
@@ -76,8 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 6,
-            icon: 'fa-satellite',
-            title: 'Shodan қалай жұмыс істейді?',
+            icon: 'fa-search',
+            title: 'Shodan',
             content: `
                 <p>Shodan - интернетке қосылған құрылғыларды іздейтін қуатты құрал.</p>
                 <p>Негізгі мүмкіндіктері:</p>
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentStoryIndex = 0;
 
-    // Story Modal elements
+    // Get DOM elements
     const modal = document.querySelector('.story-modal');
     const modalContent = modal.querySelector('.story-modal-content');
     const modalTitle = modal.querySelector('.story-modal-title');
@@ -106,25 +106,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add click handlers to story items
     document.querySelectorAll('.story-item').forEach((item, index) => {
-        item.addEventListener('click', () => openStory(index));
+        item.addEventListener('click', () => {
+            openStory(index);
+        });
     });
 
     // Open story function
     function openStory(index) {
-        const story = stories[index];
-        
-        // Update modal content
-        modalIcon.className = `fas ${story.icon}`;
-        modalTitle.textContent = story.title;
-        modalBody.innerHTML = story.content;
-        
-        // Show modal
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        
-        // Update current index and navigation
-        currentStoryIndex = index;
-        updateNavButtons();
+        if (index >= 0 && index < stories.length) {
+            const story = stories[index];
+            
+            // Update modal content
+            modalIcon.className = `fas ${story.icon}`;
+            modalTitle.textContent = story.title;
+            modalBody.innerHTML = story.content;
+            
+            // Show modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Update current index and navigation
+            currentStoryIndex = index;
+            updateNavButtons();
+        }
     }
 
     // Update navigation buttons
