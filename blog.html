@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог - yerzhan_hackerman</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">yerzhan_hackerman</a>
+            <ul>
+                <li><a href="index.html">БАСТЫ БЕТ</a></li>
+                <li><a href="about.html">МЕН ТУРАЛЫ</a></li>
+                <li><a href="blog.html" class="active">BLOG</a></li>
+                <li><a href="contact.html">БАЙЛАНЫС</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="blog-page">
+        <!-- Stories секциясы -->
+        <section class="stories-section">
+            <div class="container">
+                <h2>Жылдам тақтар</h2>
+                <div class="stories-grid">
+                    <div class="swiper stories-slider">
+                        <div class="swiper-wrapper">
+                            <!-- Story items -->
+                            <div class="swiper-slide story-card" data-story-id="1">
+                                <div class="story-content">
+                                    <div class="story-icon">🔎</div>
+                                    <h3>Фишинг деген не?</h3>
+                                </div>
+                            </div>
+                            <div class="swiper-slide story-card" data-story-id="2">
+                                <div class="story-content">
+                                    <div class="story-icon">🔎</div>
+                                    <h3>IP арқылы ақпарат табу</h3>
+                                </div>
+                            </div>
+                            <div class="swiper-slide story-card" data-story-id="3">
+                                <div class="story-content">
+                                    <div class="story-icon">🗂️</div>
+                                    <h3>Ең жақсы 5 OSINT құралы</h3>
+                                </div>
+                            </div>
+                            <div class="swiper-slide story-card" data-story-id="4">
+                                <div class="story-content">
+                                    <div class="story-icon">🛡️</div>
+                                    <h3>Құпия сөзді қорғаудың 5 әдісі</h3>
+                                </div>
+                            </div>
+                            <div class="swiper-slide story-card" data-story-id="5">
+                                <div class="story-content">
+                                    <div class="story-icon">📡</div>
+                                    <h3>Shodan қалай жұмыс істейді?</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Мақалалар секциясы -->
+        <section class="blog-posts">
+            <div class="container">
+                <h2>Соңғы мақалалар</h2>
+                <div class="posts-grid">
+                    <a href="articles/telegram-phishing.html" class="post-card">
+                        <div class="post-content">
+                            <div class="post-categories">
+                                <span class="category">Қауіпсіздік</span>
+                                <span class="category">Фишинг</span>
+                                <span class="category">Telegram</span>
+                            </div>
+                            <h3>"Тебя тут слили": Telegram-дағы жаңа фишингтік шабуыл туралы</h3>
+                            <p>Соңғы уақытта Telegram қолданушылары арасында кеңінен таралып жатқан бір хабарлама бар. Ол қысқа және үрей туғызатын мәтіннен тұрады...</p>
+                            <span class="read-more">Толығырақ оқу →</span>
+                        </div>
+                    </a>
+                    <a href="articles/phishing-databases.html" class="post-card">
+                        <div class="post-content">
+                            <div class="post-categories">
+                                <span class="category">Қауіпсіздік</span>
+                                <span class="category">Фишинг</span>
+                                <span class="category">Базалар</span>
+                            </div>
+                            <h3>Фишинг сайттардың дайын базаларын қайдан табуға болады?</h3>
+                            <p>PhishTank, OpenPhish, Abuse.ch және басқа да ресурстардан фишинг сайттардың тізімдерін қалай алуға болатынын үйренеміз...</p>
+                            <span class="read-more">Толығырақ оқу →</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Story Modal -->
+    <div class="story-modal" id="storyModal">
+        <div class="story-modal-content">
+            <div class="story-modal-header">
+                <div class="story-modal-title">
+                    <span class="story-modal-icon"></span>
+                    <span class="story-modal-title-text"></span>
+                </div>
+                <button class="story-modal-close">&times;</button>
+            </div>
+            <div class="story-modal-body">
+                <div class="story-modal-text"></div>
+            </div>
+            <div class="story-modal-footer">
+                <div class="story-modal-nav">
+                    <button class="story-nav-button" id="prevStory">
+                        ← Алдыңғы
+                    </button>
+                    <button class="story-nav-button" id="nextStory">
+                        Келесі →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 yerzhan_hackerman. Барлық құқықтар қорғалған.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Swiper инициализациясы
+        const swiper = new Swiper('.stories-slider', {
+            slidesPerView: 'auto',
+            spaceBetween: 20,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 2,
+                },
+                768: {
+                    slidesPerView: 3,
+                },
+                1024: {
+                    slidesPerView: 4,
+                }
+            }
+        });
+
+        // Stories data
+        const stories = [
+            {
+                id: 1,
+                title: 'Фишинг деген не?',
+                icon: '🔎',
+                content: `
+                    <p>Фишинг - бұл киберқылмыскерлердің қолданушылардың жеке ақпаратын алу әдісі.</p>
+                    <p>Негізгі белгілері:</p>
+                    <ul>
+                        <li>Шұғыл әрекет етуді талап ету</li>
+                        <li>Грамматикалық қателер</li>
+                        <li>Күдікті URL мекенжайлары</li>
+                        <li>Жеке ақпаратты сұрау</li>
+                    </ul>
+                    <p>Әрқашан URL мекенжайын және жіберушінің электрондық поштасын тексеріңіз!</p>
+                `
+            },
+            {
+                id: 2,
+                icon: '🔎',
+                title: 'IP арқылы ақпарат табу',
+                content: `
+                    <p>IP мекенжайы арқылы келесі ақпаратты табуға болады:</p>
+                    <ul>
+                        <li>Географиялық орналасуы</li>
+                        <li>Интернет провайдері</li>
+                        <li>Хостинг провайдері</li>
+                        <li>Қолданылатын порттар</li>
+                    </ul>
+                    <p>Ескерту: Бұл ақпарат әрқашан 100% дәл болмауы мүмкін.</p>
+                `
+            },
+            {
+                id: 3,
+                icon: '🗂️',
+                title: 'Ең жақсы 5 OSINT құралы',
+                content: `
+                    <p>OSINT зерттеулері үшін ең пайдалы құралдар:</p>
+                    <ol>
+                        <li>Maltego - байланыстарды визуализациялау</li>
+                        <li>Shodan - интернетке қосылған құрылғыларды іздеу</li>
+                        <li>TheHarvester - домен туралы ақпарат жинау</li>
+                        <li>Recon-ng - автоматтандырылған OSINT платформасы</li>
+                        <li>SpiderFoot - автоматты ақпарат жинау</li>
+                    </ol>
+                `
+            },
+            {
+                id: 4,
+                icon: '🛡️',
+                title: 'Құпия сөзді қорғаудың 5 әдісі',
+                content: `
+                    <p>Құпия сөздеріңізді қорғаудың негізгі әдістері:</p>
+                    <ol>
+                        <li>Ұзын құпия сөздер қолданыңыз (12+ таңба)</li>
+                        <li>Әртүрлі таңбаларды араластырыңыз</li>
+                        <li>2FA қосыңыз</li>
+                        <li>Құпия сөздер менеджерін қолданыңыз</li>
+                        <li>Құпия сөздерді қайталамаңыз</li>
+                    </ol>
+                `
+            },
+            {
+                id: 5,
+                icon: '📡',
+                title: 'Shodan қалай жұмыс істейді?',
+                content: `
+                    <p>Shodan - интернетке қосылған құрылғыларды іздейтін қуатты құрал.</p>
+                    <p>Негізгі мүмкіндіктері:</p>
+                    <ul>
+                        <li>Порттарды сканерлеу</li>
+                        <li>Баннерлерді жинау</li>
+                        <li>Осал құрылғыларды табу</li>
+                        <li>Фильтрлер арқылы іздеу</li>
+                    </ul>
+                    <p>Тек заңды мақсаттарда қолданыңыз!</p>
+                `
+            }
+        ];
+
+        // Modal functionality
+        const modal = document.getElementById('storyModal');
+        const modalTitle = modal.querySelector('.story-modal-title-text');
+        const modalIcon = modal.querySelector('.story-modal-icon');
+        const modalText = modal.querySelector('.story-modal-text');
+        const closeBtn = modal.querySelector('.story-modal-close');
+        const prevBtn = document.getElementById('prevStory');
+        const nextBtn = document.getElementById('nextStory');
+
+        let currentStoryId = null;
+
+        // Story cards click handlers
+        document.querySelectorAll('.story-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const storyId = parseInt(card.dataset.storyId);
+                openStory(storyId);
+            });
+        });
+
+        // Close modal
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Navigation buttons
+        prevBtn.addEventListener('click', () => {
+            const prevId = currentStoryId - 1;
+            if (prevId >= 1) {
+                openStory(prevId);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const nextId = currentStoryId + 1;
+            if (nextId <= stories.length) {
+                openStory(nextId);
+            }
+        });
+
+        // Open story function
+        function openStory(id) {
+            const story = stories.find(s => s.id === id);
+            if (!story) return;
+
+            currentStoryId = id;
+            modalTitle.textContent = story.title;
+            modalIcon.textContent = story.icon;
+            modalText.innerHTML = story.content;
+
+            // Update navigation buttons
+            prevBtn.disabled = id === 1;
+            nextBtn.disabled = id === stories.length;
+
+            modal.classList.add('active');
+        }
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('active')) return;
+
+            if (e.key === 'Escape') {
+                modal.classList.remove('active');
+            } else if (e.key === 'ArrowLeft' && !prevBtn.disabled) {
+                prevBtn.click();
+            } else if (e.key === 'ArrowRight' && !nextBtn.disabled) {
+                nextBtn.click();
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Байланыс - yerzhan_hackerman</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">yerzhan_hackerman</a>
+            <ul>
+                <li><a href="index.html">БАСТЫ БЕТ</a></li>
+                <li><a href="about.html">МЕН ТУРАЛЫ</a></li>
+                <li><a href="blog.html">BLOG</a></li>
+                <li><a href="contact.html" class="active">БАЙЛАНЫС</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contact-page">
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h1>Байланысқа шығу</h1>
+                        <p class="contact-intro">Сұрақтарыңыз бар ма? Маған хабарласыңыз!</p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <span class="contact-icon">📧</span>
+                                <h3>Email</h3>
+                                <p>mryerzhanio@gmail.com</p>
+                            </div>
+                            <div class="contact-method">
+                                <span class="contact-icon">📱</span>
+                                <h3>Telegram</h3>
+                                <p>@mryerzhanio</p>
+                            </div>
+                            <div class="contact-method">
+                                <span class="contact-icon">🌐</span>
+                                <h3>Әлеуметтік желілер</h3>
+                                <div class="social-links">
+                                    <a href="https://t.me/mryerzhanio" target="_blank">Telegram</a>
+                                    <a href="https://www.tiktok.com/@erzhan_hackerman?_t=ZM-8vriEL4AFzp&_r=1" target="_blank">TikTok</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form">
+                        <h2>Хабарлама жіберу</h2>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Атыңыз</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Тақырып</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Хабарлама</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Жіберу</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 yerzhan_hackerman. Барлық құқықтар қорғалған.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
