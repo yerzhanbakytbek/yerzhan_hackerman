@@ -555,6 +555,12 @@ footer {
     border-radius: 20px;
     overflow: hidden;
     position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.story-modal.active .story-modal-content {
+    transform: scale(1);
 }
 
 .story-modal-header {
@@ -577,11 +583,16 @@ footer {
     color: white;
 }
 
+.story-modal-icon i {
+    font-size: 20px;
+}
+
 .story-modal-title {
     flex: 1;
     margin: 0;
     font-size: 18px;
     font-weight: 600;
+    color: #333;
 }
 
 .story-modal-close {
@@ -609,6 +620,23 @@ footer {
     overflow-y: auto;
 }
 
+.story-modal-body p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.story-modal-body ul,
+.story-modal-body ol {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.story-modal-body li {
+    margin-bottom: 10px;
+    color: #333;
+}
+
 .story-modal-nav {
     display: flex;
     justify-content: space-between;
@@ -624,17 +652,26 @@ footer {
     padding: 10px 20px;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .story-nav-button:hover {
     background: #3333cc;
+    transform: translateY(-2px);
 }
 
 .story-nav-button:disabled {
     background: #ccc;
     cursor: not-allowed;
+    transform: none;
+}
+
+.story-nav-button i {
+    font-size: 14px;
 }
 
 @media (max-width: 768px) {
@@ -654,6 +691,16 @@ footer {
     .story-modal-content {
         width: 95%;
         margin: 20px;
+    }
+
+    .story-modal-body {
+        padding: 20px;
+        max-height: 50vh;
+    }
+
+    .story-nav-button {
+        padding: 8px 16px;
+        font-size: 14px;
     }
 }
 
