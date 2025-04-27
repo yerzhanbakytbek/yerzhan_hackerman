@@ -3,37 +3,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const stories = [
         {
             id: 1,
-            icon: '🔎',
-            title: 'Фишинг деген не?',
+            icon: 'fa-shield-alt',
+            title: 'Қауіпсіз интернет',
             content: `
-                <p>Фишинг - бұл киберқылмыскерлердің қолданушылардың жеке ақпаратын алу әдісі.</p>
-                <p>Негізгі белгілері:</p>
+                <p>Интернетте қауіпсіз болу үшін келесі ережелерді сақтаңыз:</p>
                 <ul>
-                    <li>Шұғыл әрекет етуді талап ету</li>
-                    <li>Грамматикалық қателер</li>
-                    <li>Күдікті URL мекенжайлары</li>
-                    <li>Жеке ақпаратты сұрау</li>
+                    <li>Күшті құпия сөздерді қолданыңыз</li>
+                    <li>Екі факторлы аутентификацияны қосыңыз</li>
+                    <li>Күдікті сілтемелерді ашпаңыз</li>
+                    <li>Жеке ақпаратты бөліспеңіз</li>
+                    <li>Антивирус бағдарламасын орнатыңыз</li>
                 </ul>
-                <p>Әрқашан URL мекенжайын және жіберушінің электрондық поштасын тексеріңіз!</p>
             `
         },
         {
             id: 2,
-            icon: '🔎',
-            title: 'IP арқылы ақпарат табу',
+            icon: 'fa-user-shield',
+            title: 'Әлеуметтік желідегі қауіпсіздік',
             content: `
-                <p>IP мекенжайы арқылы келесі ақпаратты табуға болады:</p>
+                <p>Әлеуметтік желілерде өзіңізді қорғау үшін:</p>
                 <ul>
-                    <li>Географиялық орналасуы</li>
-                    <li>Интернет провайдері</li>
-                    <li>Хостинг провайдері</li>
-                    <li>Қолданылатын порттар</li>
+                    <li>Жеке парақшаңызды қорғаңыз</li>
+                    <li>Бейтаныс адамдардан сақ болыңыз</li>
+                    <li>Күдікті хабарламаларға жауап бермеңіз</li>
+                    <li>Орналасқан жеріңізді көрсетпеңіз</li>
                 </ul>
-                <p>Ескерту: Бұл ақпарат әрқашан 100% дәл болмауы мүмкін.</p>
             `
         },
         {
             id: 3,
+            icon: 'fa-lock',
+            title: 'Құпия сөз қауіпсіздігі',
+            content: `
+                <p>Құпия сөздеріңізді қорғау үшін:</p>
+                <ul>
+                    <li>Әр аккаунтқа бөлек құпия сөз қойыңыз</li>
+                    <li>Құпия сөз менеджерін қолданыңыз</li>
+                    <li>Жиі құпия сөздерді ауыстырыңыз</li>
+                    <li>Ұзын және күрделі құпия сөздерді таңдаңыз</li>
+                </ul>
+            `
+        },
+        {
+            id: 4,
             icon: '🗂️',
             title: 'Ең жақсы 5 OSINT құралы',
             content: `
@@ -48,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `
         },
         {
-            id: 4,
+            id: 5,
             icon: '🛡️',
             title: 'Құпия сөзді қорғаудың 5 әдісі',
             content: `
@@ -63,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `
         },
         {
-            id: 5,
+            id: 6,
             icon: '📡',
             title: 'Shodan қалай жұмыс істейді?',
             content: `
@@ -80,74 +92,82 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    // Initialize Swiper
-    const swiper = new Swiper('.stories-slider', {
-        slidesPerView: 'auto',
-        spaceBetween: 20,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        breakpoints: {
-            320: {
-                slidesPerView: 2,
-            },
-            768: {
-                slidesPerView: 3,
-            },
-            1024: {
-                slidesPerView: 4,
-            }
-        }
-    });
+    let currentStoryIndex = 0;
 
     // Story Modal functionality
     const modal = document.querySelector('.story-modal');
     const modalContent = modal.querySelector('.story-modal-content');
-    const closeBtn = modal.querySelector('.story-modal-close');
+    const modalTitle = modal.querySelector('.story-modal-title');
+    const modalIcon = modal.querySelector('.story-modal-icon');
+    const modalBody = modal.querySelector('.story-modal-body');
+    const closeButton = modal.querySelector('.story-modal-close');
+    const prevButton = modal.querySelector('.prev-story');
+    const nextButton = modal.querySelector('.next-story');
 
     // Story cards click handlers
-    document.querySelectorAll('.story-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const storyId = parseInt(card.dataset.storyId);
-            const story = stories.find(s => s.id === storyId);
-            if (story) {
-                openStory(story);
-            }
-        });
+    document.querySelectorAll('.story-item').forEach((item, index) => {
+        item.addEventListener('click', () => openStory(index));
     });
 
-    function openStory(story) {
-        modalContent.innerHTML = `
-            <div class="story-modal-header">
-                <span class="story-modal-icon">${story.icon}</span>
-                <h3>${story.title}</h3>
-                <button class="story-modal-close">&times;</button>
-            </div>
-            <div class="story-modal-body">
-                ${story.content}
-            </div>
-        `;
-
+    function openStory(index) {
+        const story = stories[index];
+        modalIcon.className = `fas ${story.icon} story-modal-icon`;
+        modalTitle.textContent = story.title;
+        modalBody.innerHTML = story.content;
         modal.classList.add('active');
-
-        // Add close button functionality
-        modal.querySelector('.story-modal-close').addEventListener('click', () => {
-            modal.classList.remove('active');
-        });
+        currentStoryIndex = index;
+        updateNavButtons();
+        document.body.style.overflow = 'hidden';
     }
 
-    // Close modal when clicking outside
+    // Обновление кнопок навигации
+    function updateNavButtons() {
+        prevButton.disabled = currentStoryIndex === 0;
+        nextButton.disabled = currentStoryIndex === stories.length - 1;
+    }
+
+    // Следующая история
+    function nextStory() {
+        if (currentStoryIndex < stories.length - 1) {
+            openStory(currentStoryIndex + 1);
+        }
+    }
+
+    // Предыдущая история
+    function prevStory() {
+        if (currentStoryIndex > 0) {
+            openStory(currentStoryIndex - 1);
+        }
+    }
+
+    // Закрытие модального окна
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Обработчики событий
+    closeButton.addEventListener('click', closeModal);
+    prevButton.addEventListener('click', prevStory);
+    nextButton.addEventListener('click', nextStory);
+
+    // Закрытие по клику вне модального окна
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
-            modal.classList.remove('active');
+            closeModal();
         }
     });
 
-    // Close modal with Escape key
+    // Навигация с помощью клавиш
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            modal.classList.remove('active');
+        if (modal.classList.contains('active')) {
+            if (e.key === 'Escape') {
+                closeModal();
+            } else if (e.key === 'ArrowRight') {
+                nextStory();
+            } else if (e.key === 'ArrowLeft') {
+                prevStory();
+            }
         }
     });
 }); 
