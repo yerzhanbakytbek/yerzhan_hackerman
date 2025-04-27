@@ -1085,7 +1085,7 @@ footer {
 
 /* Contact page styles */
 .contact-page {
-    padding-top: 120px;
+    padding-top: 300px;
 }
 
 .contact-section {
@@ -1219,7 +1219,7 @@ footer {
 
 @media (max-width: 768px) {
     .contact-page {
-        padding-top: 100px;
+        padding-top: 300px;
     }
 
     .contact-section {
@@ -1246,7 +1246,7 @@ footer {
 
 @media (max-width: 480px) {
     .contact-page {
-        padding-top: 80px;
+        padding-top: 300px;
     }
 
     .contact-section {
