@@ -23,6 +23,18 @@
         </nav>
     </header>
 
+    <!-- Story Modal -->
+    <div class="story-modal">
+        <div class="story-modal-content">
+            <div class="story-modal-header">
+                <span class="story-modal-icon"></span>
+                <h3 class="story-modal-title"></h3>
+                <button class="story-modal-close">&times;</button>
+            </div>
+            <div class="story-modal-body"></div>
+        </div>
+    </div>
+
     <main class="blog-page">
         <!-- Stories секциясы -->
         <section class="stories-section">
@@ -103,215 +115,11 @@
         </section>
     </main>
 
-    <!-- Story Modal -->
-    <div class="story-modal" id="storyModal">
-        <div class="story-modal-content">
-            <div class="story-modal-header">
-                <div class="story-modal-title">
-                    <span class="story-modal-icon"></span>
-                    <span class="story-modal-title-text"></span>
-                </div>
-                <button class="story-modal-close">&times;</button>
-            </div>
-            <div class="story-modal-body">
-                <div class="story-modal-text"></div>
-            </div>
-            <div class="story-modal-footer">
-                <div class="story-modal-nav">
-                    <button class="story-nav-button" id="prevStory">
-                        ← Алдыңғы
-                    </button>
-                    <button class="story-nav-button" id="nextStory">
-                        Келесі →
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <footer>
         <p>&copy; 2025 yerzhan_hackerman. Барлық құқықтар қорғалған.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        // Swiper инициализациясы
-        const swiper = new Swiper('.stories-slider', {
-            slidesPerView: 'auto',
-            spaceBetween: 20,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            breakpoints: {
-                320: {
-                    slidesPerView: 2,
-                },
-                768: {
-                    slidesPerView: 3,
-                },
-                1024: {
-                    slidesPerView: 4,
-                }
-            }
-        });
-
-        // Stories data
-        const stories = [
-            {
-                id: 1,
-                title: 'Фишинг деген не?',
-                icon: '🔎',
-                content: `
-                    <p>Фишинг - бұл киберқылмыскерлердің қолданушылардың жеке ақпаратын алу әдісі.</p>
-                    <p>Негізгі белгілері:</p>
-                    <ul>
-                        <li>Шұғыл әрекет етуді талап ету</li>
-                        <li>Грамматикалық қателер</li>
-                        <li>Күдікті URL мекенжайлары</li>
-                        <li>Жеке ақпаратты сұрау</li>
-                    </ul>
-                    <p>Әрқашан URL мекенжайын және жіберушінің электрондық поштасын тексеріңіз!</p>
-                `
-            },
-            {
-                id: 2,
-                icon: '🔎',
-                title: 'IP арқылы ақпарат табу',
-                content: `
-                    <p>IP мекенжайы арқылы келесі ақпаратты табуға болады:</p>
-                    <ul>
-                        <li>Географиялық орналасуы</li>
-                        <li>Интернет провайдері</li>
-                        <li>Хостинг провайдері</li>
-                        <li>Қолданылатын порттар</li>
-                    </ul>
-                    <p>Ескерту: Бұл ақпарат әрқашан 100% дәл болмауы мүмкін.</p>
-                `
-            },
-            {
-                id: 3,
-                icon: '🗂️',
-                title: 'Ең жақсы 5 OSINT құралы',
-                content: `
-                    <p>OSINT зерттеулері үшін ең пайдалы құралдар:</p>
-                    <ol>
-                        <li>Maltego - байланыстарды визуализациялау</li>
-                        <li>Shodan - интернетке қосылған құрылғыларды іздеу</li>
-                        <li>TheHarvester - домен туралы ақпарат жинау</li>
-                        <li>Recon-ng - автоматтандырылған OSINT платформасы</li>
-                        <li>SpiderFoot - автоматты ақпарат жинау</li>
-                    </ol>
-                `
-            },
-            {
-                id: 4,
-                icon: '🛡️',
-                title: 'Құпия сөзді қорғаудың 5 әдісі',
-                content: `
-                    <p>Құпия сөздеріңізді қорғаудың негізгі әдістері:</p>
-                    <ol>
-                        <li>Ұзын құпия сөздер қолданыңыз (12+ таңба)</li>
-                        <li>Әртүрлі таңбаларды араластырыңыз</li>
-                        <li>2FA қосыңыз</li>
-                        <li>Құпия сөздер менеджерін қолданыңыз</li>
-                        <li>Құпия сөздерді қайталамаңыз</li>
-                    </ol>
-                `
-            },
-            {
-                id: 5,
-                icon: '📡',
-                title: 'Shodan қалай жұмыс істейді?',
-                content: `
-                    <p>Shodan - интернетке қосылған құрылғыларды іздейтін қуатты құрал.</p>
-                    <p>Негізгі мүмкіндіктері:</p>
-                    <ul>
-                        <li>Порттарды сканерлеу</li>
-                        <li>Баннерлерді жинау</li>
-                        <li>Осал құрылғыларды табу</li>
-                        <li>Фильтрлер арқылы іздеу</li>
-                    </ul>
-                    <p>Тек заңды мақсаттарда қолданыңыз!</p>
-                `
-            }
-        ];
-
-        // Modal functionality
-        const modal = document.getElementById('storyModal');
-        const modalTitle = modal.querySelector('.story-modal-title-text');
-        const modalIcon = modal.querySelector('.story-modal-icon');
-        const modalText = modal.querySelector('.story-modal-text');
-        const closeBtn = modal.querySelector('.story-modal-close');
-        const prevBtn = document.getElementById('prevStory');
-        const nextBtn = document.getElementById('nextStory');
-
-        let currentStoryId = null;
-
-        // Story cards click handlers
-        document.querySelectorAll('.story-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const storyId = parseInt(card.dataset.storyId);
-                openStory(storyId);
-            });
-        });
-
-        // Close modal
-        closeBtn.addEventListener('click', () => {
-            modal.classList.remove('active');
-        });
-
-        // Navigation buttons
-        prevBtn.addEventListener('click', () => {
-            const prevId = currentStoryId - 1;
-            if (prevId >= 1) {
-                openStory(prevId);
-            }
-        });
-
-        nextBtn.addEventListener('click', () => {
-            const nextId = currentStoryId + 1;
-            if (nextId <= stories.length) {
-                openStory(nextId);
-            }
-        });
-
-        // Open story function
-        function openStory(id) {
-            const story = stories.find(s => s.id === id);
-            if (!story) return;
-
-            currentStoryId = id;
-            modalTitle.textContent = story.title;
-            modalIcon.textContent = story.icon;
-            modalText.innerHTML = story.content;
-
-            // Update navigation buttons
-            prevBtn.disabled = id === 1;
-            nextBtn.disabled = id === stories.length;
-
-            modal.classList.add('active');
-        }
-
-        // Close modal when clicking outside
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-            }
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (!modal.classList.contains('active')) return;
-
-            if (e.key === 'Escape') {
-                modal.classList.remove('active');
-            } else if (e.key === 'ArrowLeft' && !prevBtn.disabled) {
-                prevBtn.click();
-            } else if (e.key === 'ArrowRight' && !nextBtn.disabled) {
-                nextBtn.click();
-            }
-        });
-    </script>
+    <script src="js/stories.js"></script>
 </body>
 </html> 
