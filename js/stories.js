@@ -1,20 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const storyModal = document.getElementById('storyModal');
-    const modalTitle = document.querySelector('.story-modal-title-text');
-    const modalIcon = document.querySelector('.story-modal-icon');
-    const modalContent = document.querySelector('.story-modal-text');
-    const closeButton = document.querySelector('.story-modal-close');
-    const prevButton = document.getElementById('prevStory');
-    const nextButton = document.getElementById('nextStory');
-
-    let currentStoryId = null;
-
     // Stories data
     const stories = [
         {
             id: 1,
-            title: 'Фишинг деген не?',
             icon: '🔎',
+            title: 'Фишинг деген не?',
             content: `
                 <p>Фишинг - бұл киберқылмыскерлердің қолданушылардың жеке ақпаратын алу әдісі.</p>
                 <p>Негізгі белгілері:</p>
@@ -29,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 2,
-            title: 'IP арқылы ақпарат табу',
             icon: '🔎',
+            title: 'IP арқылы ақпарат табу',
             content: `
                 <p>IP мекенжайы арқылы келесі ақпаратты табуға болады:</p>
                 <ul>
@@ -44,106 +34,120 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             id: 3,
-            title: 'Ең жақсы 5 OSINT құралы',
             icon: '🗂️',
+            title: 'Ең жақсы 5 OSINT құралы',
             content: `
                 <p>OSINT зерттеулері үшін ең пайдалы құралдар:</p>
                 <ol>
                     <li>Maltego - байланыстарды визуализациялау</li>
                     <li>Shodan - интернетке қосылған құрылғыларды іздеу</li>
-                    <li>TheHarvester - email және домендерді жинау</li>
-                    <li>Recon-ng - веб-реконнессанс</li>
-                    <li>SpiderFoot - автоматты OSINT</li>
+                    <li>TheHarvester - домен туралы ақпарат жинау</li>
+                    <li>Recon-ng - автоматтандырылған OSINT платформасы</li>
+                    <li>SpiderFoot - автоматты ақпарат жинау</li>
                 </ol>
             `
         },
         {
             id: 4,
-            title: 'Құпия сөзді қорғаудың 5 әдісі',
             icon: '🛡️',
+            title: 'Құпия сөзді қорғаудың 5 әдісі',
             content: `
-                <p>Құпия сөздерді қорғау үшін маңызды ережелер:</p>
+                <p>Құпия сөздеріңізді қорғаудың негізгі әдістері:</p>
                 <ol>
-                    <li>Ұзын құпия сөздер қолданыңыз (кем дегенде 12 таңба)</li>
+                    <li>Ұзын құпия сөздер қолданыңыз (12+ таңба)</li>
                     <li>Әртүрлі таңбаларды араластырыңыз</li>
-                    <li>Әр сервис үшін бөлек құпия сөз қолданыңыз</li>
-                    <li>Құпия сөз менеджерін пайдаланыңыз</li>
-                    <li>Екі факторлы аутентификацияны қосыңыз</li>
+                    <li>2FA қосыңыз</li>
+                    <li>Құпия сөздер менеджерін қолданыңыз</li>
+                    <li>Құпия сөздерді қайталамаңыз</li>
                 </ol>
             `
         },
         {
             id: 5,
-            title: 'Shodan қалай жұмыс істейді?',
             icon: '📡',
+            title: 'Shodan қалай жұмыс істейді?',
             content: `
                 <p>Shodan - интернетке қосылған құрылғыларды іздейтін қуатты құрал.</p>
                 <p>Негізгі мүмкіндіктері:</p>
                 <ul>
                     <li>Порттарды сканерлеу</li>
-                    <li>Сервистерді анықтау</li>
+                    <li>Баннерлерді жинау</li>
                     <li>Осал құрылғыларды табу</li>
-                    <li>Бейнекамераларды іздеу</li>
+                    <li>Фильтрлер арқылы іздеу</li>
                 </ul>
-                <p>Маңызды: Shodan-ды тек заңды мақсаттарда қолданыңыз!</p>
+                <p>Тек заңды мақсаттарда қолданыңыз!</p>
             `
         }
     ];
 
-    // Story cards click handler
+    // Initialize Swiper
+    const swiper = new Swiper('.stories-slider', {
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+            },
+            768: {
+                slidesPerView: 3,
+            },
+            1024: {
+                slidesPerView: 4,
+            }
+        }
+    });
+
+    // Story Modal functionality
+    const modal = document.querySelector('.story-modal');
+    const modalContent = modal.querySelector('.story-modal-content');
+    const closeBtn = modal.querySelector('.story-modal-close');
+
+    // Story cards click handlers
     document.querySelectorAll('.story-card').forEach(card => {
         card.addEventListener('click', () => {
             const storyId = parseInt(card.dataset.storyId);
-            showStory(storyId);
+            const story = stories.find(s => s.id === storyId);
+            if (story) {
+                openStory(story);
+            }
         });
     });
 
-    // Show story in modal
-    function showStory(id) {
-        const story = stories.find(s => s.id === id);
-        if (!story) return;
+    function openStory(story) {
+        modalContent.innerHTML = `
+            <div class="story-modal-header">
+                <span class="story-modal-icon">${story.icon}</span>
+                <h3>${story.title}</h3>
+                <button class="story-modal-close">&times;</button>
+            </div>
+            <div class="story-modal-body">
+                ${story.content}
+            </div>
+        `;
 
-        currentStoryId = id;
-        modalTitle.textContent = story.title;
-        modalIcon.textContent = story.icon;
-        modalContent.innerHTML = story.content;
-        storyModal.classList.add('active');
-        updateNavigationButtons();
+        modal.classList.add('active');
+
+        // Add close button functionality
+        modal.querySelector('.story-modal-close').addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
     }
 
-    // Update navigation buttons
-    function updateNavigationButtons() {
-        prevButton.disabled = currentStoryId === 1;
-        nextButton.disabled = currentStoryId === stories.length;
-    }
-
-    // Navigation handlers
-    prevButton.addEventListener('click', () => {
-        if (currentStoryId > 1) {
-            showStory(currentStoryId - 1);
+    // Close modal when clicking outside
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
         }
     });
 
-    nextButton.addEventListener('click', () => {
-        if (currentStoryId < stories.length) {
-            showStory(currentStoryId + 1);
-        }
-    });
-
-    // Close modal handlers
-    closeButton.addEventListener('click', () => {
-        storyModal.classList.remove('active');
-    });
-
-    storyModal.addEventListener('click', (e) => {
-        if (e.target === storyModal) {
-            storyModal.classList.remove('active');
-        }
-    });
-
+    // Close modal with Escape key
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && storyModal.classList.contains('active')) {
-            storyModal.classList.remove('active');
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            modal.classList.remove('active');
         }
     });
 }); 
