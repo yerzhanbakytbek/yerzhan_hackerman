@@ -452,14 +452,12 @@ footer {
 
 /* Stories section */
 .stories-section {
-    margin-bottom: 4rem;
+    padding: 6rem 2rem;
+    background: var(--background);
 }
 
-.stories-section h2 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 2rem;
+.stories-grid {
+    margin-top: 2rem;
 }
 
 .stories-slider {
@@ -473,6 +471,8 @@ footer {
     cursor: pointer;
     transition: var(--transition);
     overflow: hidden;
+    width: 280px;
+    margin-right: 20px;
 }
 
 .story-card:hover {
@@ -497,6 +497,141 @@ footer {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.25rem;
     line-height: 1.4;
+    color: #fff;
+}
+
+/* Story Modal Styles */
+.story-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1100;
+}
+
+.story-modal.active {
+    display: flex;
+}
+
+.story-modal-content {
+    background: white;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.story-modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.story-modal-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.story-modal-icon {
+    font-size: 2rem;
+}
+
+.story-modal-title-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.story-modal-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    color: #666;
+}
+
+.story-modal-body {
+    padding: 2rem;
+}
+
+.story-modal-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.story-modal-text p {
+    margin-bottom: 1rem;
+}
+
+.story-modal-text ul,
+.story-modal-text ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.story-modal-text li {
+    margin-bottom: 0.5rem;
+}
+
+.story-modal-footer {
+    padding: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.story-modal-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.story-nav-button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.story-nav-button:hover {
+    background: #3333cc;
+}
+
+.story-nav-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .story-card {
+        width: 220px;
+        height: 180px;
+    }
+
+    .story-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .story-modal-content {
+        width: 95%;
+    }
+
+    .story-modal-title-text {
+        font-size: 1.25rem;
+    }
 }
 
 /* Blog posts section */
@@ -654,73 +789,6 @@ footer {
         padding-bottom: 3rem;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
-    }
-}
-
-/* Story Modal Styles */
-.story-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 1100;
-}
-
-.story-modal.active {
-    display: flex;
-}
-
-.story-modal-content {
-    position: relative;
-    width: auto;
-    height: auto;
-    max-width: 90%;
-    max-height: 90vh;
-    background: transparent;
-}
-
-.story-modal-content video {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 90vh;
-    display: block;
-}
-
-.close-modal {
-    position: absolute;
-    top: -40px;
-    right: -40px;
-    width: 30px;
-    height: 30px;
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1200;
-}
-
-.close-modal:hover {
-    opacity: 0.8;
-}
-
-@media (max-width: 768px) {
-    .story-modal-content {
-        width: 95%;
-    }
-    
-    .close-modal {
-        right: 0;
     }
 }
 
