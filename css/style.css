@@ -990,6 +990,8 @@ footer {
 /* Blog Section */
 .blog {
     padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .blog h2 {
@@ -997,6 +999,7 @@ footer {
     font-size: 2.5rem;
     color: var(--primary-color);
     margin-bottom: 2rem;
+    padding-left: 0;
 }
 
 .blog-grid {
@@ -1269,9 +1272,6 @@ footer {
 /* Works секциясы */
 .works {
     padding: 6rem 2rem;
-}
-
-.works .container {
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -1280,7 +1280,8 @@ footer {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 2.5rem;
     color: var(--primary-color);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    padding-left: 0;
 }
 
 .works-grid {
