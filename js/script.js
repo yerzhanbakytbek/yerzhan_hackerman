@@ -108,7 +108,7 @@ class ChatManager {
             this.addMessage('Жауапты күтіңіз...', false);
 
             // API-ға сұраныс жіберу
-            const response = await fetch('http://localhost:5500/api/chat', {
+            const response = await fetch('https://osint-bot-api.onrender.com/api/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
