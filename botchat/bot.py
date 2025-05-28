@@ -13,7 +13,6 @@ import socket
 from io import BytesIO
 from urllib.parse import urlparse
 
-
 SHODAN_API_KEY = '0AU7CEgd89QiIYQUlouI4dwU1bWoMWsq'
 VIRUSTOTAL_API_KEY = '897ae61e98e5dd2ffaa3a23976aec52b0d0bb2f01a04d3583955686de9ff6719'
 GEMINI_API_KEY = 'AIzaSyA7feCQnxaRmPgnztD5b7J3ppJWQ7IWDYE'
